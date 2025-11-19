@@ -790,7 +790,7 @@
 				prayerCard.className = 'prayer-card';
 				prayerCard.id = `prayer-${prayerName}`;
 				
-				if (prayerName === "Fajr" || prayerName === "Sunrise") {
+				if (prayerName === "Fajr" || prayerName === "Sunrise" || prayerName === "Dhuhr" || prayerName === "Asr" || prayerName === "Maghrib" || prayerName === "Isha")  {
 					prayerCard.innerHTML = `
 						<div class="prayer-name">
 							<i class="${prayerIcons[prayerName]}"></i>
@@ -909,6 +909,7 @@
     </script>
 </body>
 </html>
+
 
 
 
