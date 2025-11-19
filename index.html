@@ -764,34 +764,44 @@
             };
             
             prayerGridEl.innerHTML = '';
-            
-            Object.entries(prayerTimes).forEach(([prayer, time]) => {
-                const prayerCard = document.createElement('div');
-                prayerCard.className = 'prayer-card';
-                prayerCard.id = `prayer-${prayer}`;
-                
-				const prayerArabicNames = {
-					Fajr: "الفجر",
-					Sunrise: "الشروق", 
-					Dhuhr: "الظهر",
-					Asr: "العصر", 
-					Maghrib: "المغرب",
-					Isha: "العشاء"
-				};
-
-				prayerCard.innerHTML = `
-					<div class="prayer-name">
-						<i class="${prayerIcons[prayer]}"></i>
-						<div class="prayer-names">
-							<div class="prayer-arabic">${prayerArabicNames[prayer]}</div>
-							<div class="prayer-english">${prayer}</div>
+            // Add this object at the top with other constants
+			const prayerArabicNames = {
+				Fajr: "الفجر",
+				Sunrise: "الشروق", 
+				Dhuhr: "الظهر",
+				Asr: "العصر", 
+				Maghrib: "المغرب", 
+				Isha: "العشاء"
+			};
+			// In displayPrayerTimes() function, replace the entire prayerCard creation with:
+			Object.entries(prayerTimes).forEach(([prayerName, time]) => {
+				const prayerCard = document.createElement('div');
+				prayerCard.className = 'prayer-card';
+				prayerCard.id = `prayer-${prayerName}`;
+				
+				if (prayerName === "Fajr") {
+					prayerCard.innerHTML = `
+						<div class="prayer-name">
+							<i class="${prayerIcons[prayerName]}"></i>
+							<div class="prayer-names fajr-names">
+								<div class="prayer-arabic">${prayerArabicNames[prayerName]}</div>
+								<div class="prayer-english">${prayerName}</div>
+							</div>
 						</div>
-					</div>
-					<div class="prayer-time">${formatTime(time)}</div>
-				`;
-                
-                prayerGridEl.appendChild(prayerCard);
-            });
+						<div class="prayer-time">${formatTime(time)}</div>
+					`;
+				} else {
+					prayerCard.innerHTML = `
+						<div class="prayer-name">
+							<i class="${prayerIcons[prayerName]}"></i>
+							<span>${prayerName}</span>
+						</div>
+						<div class="prayer-time">${formatTime(time)}</div>
+					`;
+				}
+				
+				prayerGridEl.appendChild(prayerCard);
+			});
 			if (prayer === "Fajr") {
 				prayerCard.innerHTML = `
 					<div class="prayer-name">
