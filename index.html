@@ -439,6 +439,22 @@
                 font-size: 0.7rem;
             }
         }
+		/* After your existing .prayer-name styles */
+		.prayer-names {
+			text-align: left;
+		}
+
+		.prayer-arabic {
+			font-size: 1rem;
+			font-weight: 600;
+			margin-bottom: 2px;
+		}
+
+		.prayer-english {
+			font-size: 0.8rem;
+			color: #b0e6ff;
+			opacity: 0.8;
+		}
 	</style>
 </head>
 <body>
@@ -737,13 +753,25 @@
                 prayerCard.className = 'prayer-card';
                 prayerCard.id = `prayer-${prayer}`;
                 
-                prayerCard.innerHTML = `
-                    <div class="prayer-name">
-                        <i class="${prayerIcons[prayer]}"></i>
-                        <span>${prayer}</span>
-                    </div>
-                    <div class="prayer-time">${formatTime(time)}</div>
-                `;
+				const prayerArabicNames = {
+					Fajr: "الفجر",
+					Sunrise: "الشروق", 
+					Dhuhr: "الظهر",
+					Asr: "العصر", 
+					Maghrib: "المغرب",
+					Isha: "العشاء"
+				};
+
+				prayerCard.innerHTML = `
+					<div class="prayer-name">
+						<i class="${prayerIcons[prayer]}"></i>
+						<div class="prayer-names">
+							<div class="prayer-arabic">${prayerArabicNames[prayer]}</div>
+							<div class="prayer-english">${prayer}</div>
+						</div>
+					</div>
+					<div class="prayer-time">${formatTime(time)}</div>
+				`;
                 
                 prayerGridEl.appendChild(prayerCard);
             });
@@ -855,7 +883,6 @@
     </script>
 </body>
 </html>
-
 
 
 
