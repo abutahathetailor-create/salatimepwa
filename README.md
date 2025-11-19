@@ -20,4 +20,4 @@ Uses University of Islamic Sciences, Karachi method
 Jubail, Saudi Arabia (27.0040° N, 49.6460° E)
 
 
-https://abutahathetailor-create.github.io/salah-times-jubail/
+https://abutahathetailor-create.github.io/salahtimepwa/
