@@ -762,7 +762,14 @@
                 showError(`Using approximate prayer times. ${error.message}`);
             }
         }
-        
+        // Format time to 12-hour format
+        function formatTime(timeString) {
+            const [hours, minutes] = timeString.split(':');
+            const hour = parseInt(hours);
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const formattedHour = hour % 12 || 12;
+            return `${formattedHour}:${minutes} ${ampm}`;
+        }          
         // Display prayer times in the grid
 		// Display prayer times in the grid
 		function displayPrayerTimes() {
@@ -901,6 +908,7 @@
     </script>
 </body>
 </html>
+
 
 
 
