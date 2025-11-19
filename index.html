@@ -455,6 +455,23 @@
 			color: #b0e6ff;
 			opacity: 0.8;
 		}
+		.fajr-names {
+			text-align: right;
+			width: 100%;
+		}
+
+		.fajr-names .prayer-arabic {
+			font-size: 1rem;
+			font-weight: 600;
+			margin-bottom: 2px;
+		}
+
+		.fajr-names .prayer-english {
+			font-size: 0.8rem;
+			color: #b0e6ff;
+			opacity: 0.8;
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
@@ -775,6 +792,27 @@
                 
                 prayerGridEl.appendChild(prayerCard);
             });
+			if (prayer === "Fajr") {
+				prayerCard.innerHTML = `
+					<div class="prayer-name">
+						<i class="${prayerIcons[prayer]}"></i>
+						<div class="prayer-names fajr-names">
+							<div class="prayer-arabic">الفجر</div>
+							<div class="prayer-english">${prayer}</div>
+						</div>
+					</div>
+					<div class="prayer-time">${formatTime(time)}</div>
+				`;
+			} else {
+				// Keep original code for other prayers
+				prayerCard.innerHTML = `
+					<div class="prayer-name">
+						<i class="${prayerIcons[prayer]}"></i>
+						<span>${prayer}</span>
+					</div>
+					<div class="prayer-time">${formatTime(time)}</div>
+				`;
+			}
         }
         
         // Format time to 12-hour format
