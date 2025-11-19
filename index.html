@@ -516,7 +516,18 @@
         // Jubail coordinates
         const JUBAIL_LAT = 27.0040;
         const JUBAIL_LNG = 49.6460;
-        
+
+		// Arabic prayer names - ADD THIS NEW OBJECT
+		const prayerArabicNames = {
+			Fajr: "الفجر",
+			Sunrise: "الشروق", 
+			Dhuhr: "الظهر",
+			Asr: "العصر", 
+			Maghrib: "المغرب", 
+			Isha: "العشاء"
+		};
+
+     
         // DOM Elements
         const currentDateEl = document.getElementById('currentDate');
         const hijriDateEl = document.getElementById('hijriDate');
@@ -753,42 +764,45 @@
         }
         
         // Display prayer times in the grid
-function displayPrayerTimes() {
-    const prayerIcons = {
-        Fajr: "fas fa-star-and-crescent",
-        Sunrise: "fas fa-sun",
-        Dhuhr: "fas fa-sun",
-        Asr: "fas fa-cloud-sun", 
-        Maghrib: "fas fa-sun",
-        Isha: "fas fa-moon"
-    };
-    
-    prayerGridEl.innerHTML = '';
-    
-    Object.entries(prayerTimes).forEach(([prayerName, time]) => {
-        const prayerCard = document.createElement('div');
-        prayerCard.className = 'prayer-card';
-        prayerCard.id = `prayer-${prayerName}`;
-        
-        prayerCard.innerHTML = `
-            <div class="prayer-name">
-                <i class="${prayerIcons[prayerName]}"></i>
-                <span>${prayerName}</span>
-            </div>
-            <div class="prayer-time">${formatTime(time)}</div>
-        `;
-        
-        prayerGridEl.appendChild(prayerCard);
-    });
-}        
-        // Format time to 12-hour format
-        function formatTime(timeString) {
-            const [hours, minutes] = timeString.split(':');
-            const hour = parseInt(hours);
-            const ampm = hour >= 12 ? 'PM' : 'AM';
-            const formattedHour = hour % 12 || 12;
-            return `${formattedHour}:${minutes} ${ampm}`;
-        }
+		// Display prayer times in the grid
+		function displayPrayerTimes() {
+			const prayerIcons = {
+				Fajr: "fas fa-star-and-crescent",
+				Sunrise: "fas fa-sun",
+				Dhuhr: "fas fa-sun",
+				Asr: "fas fa-cloud-sun", 
+				Maghrib: "fas fa-sun",
+				Isha: "fas fa-moon"
+			};
+			
+			prayerGridEl.innerHTML = '';
+			
+			Object.entries(prayerTimes).forEach(([prayerName, time]) => {
+				const prayerCard = document.createElement('div');
+				prayerCard.className = 'prayer-card';
+				prayerCard.id = `prayer-${prayerName}`;
+				
+				if (prayerName === "Fajr") {
+					prayerCard.innerHTML = `
+						<div class="prayer-name">
+							<i class="${prayerIcons[prayerName]}"></i>
+							<span>${prayerArabicNames[prayerName]} (${prayerName})</span>
+						</div>
+						<div class="prayer-time">${formatTime(time)}</div>
+					`;
+				} else {
+					prayerCard.innerHTML = `
+						<div class="prayer-name">
+							<i class="${prayerIcons[prayerName]}"></i>
+							<span>${prayerName}</span>
+						</div>
+						<div class="prayer-time">${formatTime(time)}</div>
+					`;
+				}
+				
+				prayerGridEl.appendChild(prayerCard);
+			});
+		}
         
         // Update countdown to next prayer
         function updateCountdown() {
@@ -887,8 +901,6 @@ function displayPrayerTimes() {
     </script>
 </body>
 </html>
-
-
 
 
 
