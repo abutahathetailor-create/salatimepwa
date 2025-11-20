@@ -19,11 +19,11 @@ Uses University of Islamic Sciences, Karachi method
 ## Location
 Jubail, Saudi Arabia (27.0040° N, 49.6460° E)
 
-##Test check
+## Test check
 https://abutahathetailor-create.github.io/salatimepwa/
 
 
-##Fonts Used: for Icons: 
+## Fonts Used: for Icons: 
 Excellent project by Alessio Atzeni, you can visit his gits following.
 https://github.com/tomlutzenberger
 https://github.com/tomlutzenberger/meteocons.css
