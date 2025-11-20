@@ -21,3 +21,9 @@ Jubail, Saudi Arabia (27.0040° N, 49.6460° E)
 
 
 https://abutahathetailor-create.github.io/salatimepwa/
+
+
+Fonts Used: for Icons: excellent project by Alessio Atzeni, you can visit his gits following.
+https://github.com/tomlutzenberger
+https://github.com/tomlutzenberger/meteocons.css
+An easy to use "Font Awesome"-like package for meteorological Icons. Free to use for everyone.
